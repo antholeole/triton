@@ -50,6 +50,7 @@ def triton_(
             tl.load(one_by + index_1d, index_1d < xnumel),
             [XBLOCK, 1],
         )
+    print("after", tmp10)
 
     # removing any of these breaks the bug
     tmp7 = tl.where(tmp0, tmp2, tmp4)
@@ -83,7 +84,6 @@ buf0 = empty((1024,), device="cuda", dtype=torch.float32)
 buf1 = empty((1024,), device="cuda", dtype=torch.float32)
 xblock = 1
 
-print(triton.compile(triton_), signature="*f32,*f32")
 print(buf1)
 triton_[(triton.cdiv(1024, xblock),)](
     arg1_1,

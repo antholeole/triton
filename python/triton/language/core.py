@@ -761,7 +761,6 @@ class tensor:
 
     @builtin
     def __getitem__(self, slices, _builder=None):
-        breakpoint()
         if isinstance(slices, (slice, constexpr)):
             slices = [slices]
         ret = self
