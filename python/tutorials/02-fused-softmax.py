@@ -28,7 +28,7 @@ import triton.language as tl
 
 
 @torch.jit.script
-def naive_softmax(x):
+def naive_softmax(x: torch.Tensor):
     """Compute row-wise softmax of X using native pytorch
 
     We subtract the maximum element in order to avoid overflows. Softmax is invariant to

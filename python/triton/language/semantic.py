@@ -515,7 +515,8 @@ def expand_dims(input: tl.tensor, axis: int, builder: ir.builder) -> tl.tensor:
         return splat(input, shape=dst_shape, builder=builder)
 
     ret_ty = tl.block_type(input.type.scalar, dst_shape)
-    return tl.tensor(builder.create_expand_dims(input.handle, axis), ret_ty)
+    c = builder.create_expand_dims(input.handle, axis)
+    return tl.tensor(c, ret_ty)
 
 
 def cat(lhs: tl.tensor, rhs: tl.tensor, can_reorder: bool, builder: ir.builder) -> tl.tensor:
